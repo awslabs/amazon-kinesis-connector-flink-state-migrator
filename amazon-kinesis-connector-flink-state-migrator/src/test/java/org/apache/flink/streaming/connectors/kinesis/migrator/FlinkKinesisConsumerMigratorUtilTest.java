@@ -17,8 +17,6 @@
 package org.apache.flink.streaming.connectors.kinesis.migrator;
 
 import org.apache.flink.api.java.tuple.Tuple2;
-import software.amazon.kinesis.connectors.flink.model.SequenceNumber;
-import software.amazon.kinesis.connectors.flink.model.StreamShardMetadata;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,10 +25,11 @@ class FlinkKinesisConsumerMigratorUtilTest {
 
     @Test
     void mapAmazonStateToApache() {
-        StreamShardMetadata amazonStreamShardMetadata = getAmazonStreamShardMetadata();
-        SequenceNumber amazonSequenceNumber = getAmazonSequenceNumber();
+        software.amazon.kinesis.connectors.flink.model.StreamShardMetadata amazonStreamShardMetadata = getAmazonStreamShardMetadata();
+        software.amazon.kinesis.connectors.flink.model.SequenceNumber amazonSequenceNumber = getAmazonSequenceNumber();
 
-        Tuple2<StreamShardMetadata, SequenceNumber> apacheState = FlinkKinesisConsumerMigratorUtil
+        Tuple2<org.apache.flink.streaming.connectors.kinesis.model.StreamShardMetadata,
+                org.apache.flink.streaming.connectors.kinesis.model.SequenceNumber> apacheState = FlinkKinesisConsumerMigratorUtil
                 .mapAmazonStateToApache(Tuple2.of(amazonStreamShardMetadata, amazonSequenceNumber));
 
         assertThat(apacheState.f0.getStreamName()).isEqualTo(amazonStreamShardMetadata.getStreamName());
@@ -45,8 +44,8 @@ class FlinkKinesisConsumerMigratorUtilTest {
         assertThat(apacheState.f1.getSubSequenceNumber()).isEqualTo(amazonSequenceNumber.getSubSequenceNumber());
     }
 
-    private StreamShardMetadata getAmazonStreamShardMetadata() {
-        StreamShardMetadata streamShardMetadata = new StreamShardMetadata();
+    private software.amazon.kinesis.connectors.flink.model.StreamShardMetadata getAmazonStreamShardMetadata() {
+        software.amazon.kinesis.connectors.flink.model.StreamShardMetadata streamShardMetadata = new software.amazon.kinesis.connectors.flink.model.StreamShardMetadata();
         streamShardMetadata.setStreamName("stream-1");
         streamShardMetadata.setShardId("shard-00001");
         streamShardMetadata.setParentShardId("shard-00000");
@@ -58,7 +57,7 @@ class FlinkKinesisConsumerMigratorUtilTest {
         return streamShardMetadata;
     }
 
-    private SequenceNumber getAmazonSequenceNumber() {
-        return new SequenceNumber("seq", 1);
+    private software.amazon.kinesis.connectors.flink.model.SequenceNumber getAmazonSequenceNumber() {
+        return new software.amazon.kinesis.connectors.flink.model.SequenceNumber("seq", 1);
     }
 }
