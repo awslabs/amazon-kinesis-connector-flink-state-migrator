@@ -17,8 +17,6 @@
 package org.apache.flink.streaming.connectors.kinesis.migrator;
 
 import org.apache.flink.api.java.tuple.Tuple2;
-import software.amazon.kinesis.connectors.flink.model.SequenceNumber;
-import software.amazon.kinesis.connectors.flink.model.StreamShardMetadata;
 
 public class FlinkKinesisConsumerMigratorUtil {
     public static final String STATE_NAME = "Kinesis-Stream-Shard-State";
@@ -27,14 +25,14 @@ public class FlinkKinesisConsumerMigratorUtil {
         // prevent instantiation
     }
     public static Tuple2<
-            StreamShardMetadata,
-            SequenceNumber> mapAmazonStateToApache(
-            final Tuple2<StreamShardMetadata, SequenceNumber> amazonState) {
+            org.apache.flink.streaming.connectors.kinesis.model.StreamShardMetadata,
+            org.apache.flink.streaming.connectors.kinesis.model.SequenceNumber> mapAmazonStateToApache(
+            final Tuple2<software.amazon.kinesis.connectors.flink.model.StreamShardMetadata, software.amazon.kinesis.connectors.flink.model.SequenceNumber> amazonState) {
 
-        final StreamShardMetadata apacheStreamShardMetadata =
-                new StreamShardMetadata();
+        final org.apache.flink.streaming.connectors.kinesis.model.StreamShardMetadata apacheStreamShardMetadata =
+                new org.apache.flink.streaming.connectors.kinesis.model.StreamShardMetadata();
 
-        final StreamShardMetadata amazonStreamShardMetadata = amazonState.getField(0);
+        final software.amazon.kinesis.connectors.flink.model.StreamShardMetadata amazonStreamShardMetadata = amazonState.getField(0);
         apacheStreamShardMetadata.setShardId(amazonStreamShardMetadata.getShardId());
         apacheStreamShardMetadata.setParentShardId(amazonStreamShardMetadata.getParentShardId());
         apacheStreamShardMetadata.setAdjacentParentShardId(amazonStreamShardMetadata.getAdjacentParentShardId());
@@ -44,9 +42,9 @@ public class FlinkKinesisConsumerMigratorUtil {
         apacheStreamShardMetadata.setEndingSequenceNumber(amazonStreamShardMetadata.getEndingSequenceNumber());
         apacheStreamShardMetadata.setStartingSequenceNumber(amazonStreamShardMetadata.getStartingSequenceNumber());
 
-        final SequenceNumber amazonSequenceNumber = amazonState.getField(1);
-        final SequenceNumber apacheSequenceNumber =
-                new SequenceNumber(
+        final software.amazon.kinesis.connectors.flink.model.SequenceNumber amazonSequenceNumber = amazonState.getField(1);
+        final org.apache.flink.streaming.connectors.kinesis.model.SequenceNumber apacheSequenceNumber =
+                new org.apache.flink.streaming.connectors.kinesis.model.SequenceNumber(
                         amazonSequenceNumber.getSequenceNumber(),
                         amazonSequenceNumber.getSubSequenceNumber());
 

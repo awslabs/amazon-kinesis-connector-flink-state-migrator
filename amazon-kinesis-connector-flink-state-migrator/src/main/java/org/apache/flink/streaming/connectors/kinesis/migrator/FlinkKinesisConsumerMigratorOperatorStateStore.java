@@ -32,8 +32,6 @@ import org.apache.flink.api.java.typeutils.runtime.TupleSerializer;
 import org.apache.flink.runtime.state.PartitionableListState;
 import org.apache.flink.runtime.state.RegisteredOperatorStateBackendMetaInfo;
 import org.apache.flink.util.Preconditions;
-import software.amazon.kinesis.connectors.flink.model.SequenceNumber;
-import software.amazon.kinesis.connectors.flink.model.StreamShardMetadata;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -92,8 +90,8 @@ public class FlinkKinesisConsumerMigratorOperatorStateStore implements OperatorS
     }
 
     public <S> ListState<S> migrateAmazonStateToApache(final ListStateDescriptor<S> apacheStateDescriptor) throws Exception {
-        final ListStateDescriptor<Tuple2<StreamShardMetadata, SequenceNumber>> amazonListStateDescriptor = new ListStateDescriptor<>(FlinkKinesisConsumerMigratorUtil.STATE_NAME,
-                new TupleTypeInfo<>(TypeInformation.of(StreamShardMetadata.class), TypeInformation.of(SequenceNumber.class)));
+        final ListStateDescriptor<Tuple2<software.amazon.kinesis.connectors.flink.model.StreamShardMetadata, software.amazon.kinesis.connectors.flink.model.SequenceNumber>> amazonListStateDescriptor = new ListStateDescriptor<>(FlinkKinesisConsumerMigratorUtil.STATE_NAME,
+                new TupleTypeInfo<>(TypeInformation.of(software.amazon.kinesis.connectors.flink.model.StreamShardMetadata.class), TypeInformation.of(software.amazon.kinesis.connectors.flink.model.SequenceNumber.class)));
 
         final ListState<S> amazonListState = (ListState<S>) delegate.getUnionListState(amazonListStateDescriptor);
 
@@ -105,10 +103,13 @@ public class FlinkKinesisConsumerMigratorOperatorStateStore implements OperatorS
         PartitionableListState<S> partitionableListState = (PartitionableListState<S>) amazonListState;
         partitionableListState.setStateMetaInfo(new RegisteredOperatorStateBackendMetaInfo<>(FlinkKinesisConsumerMigratorUtil.STATE_NAME, apacheStateDescriptor.getElementSerializer(), UNION));
 
-        final List<Tuple2<StreamShardMetadata,
-                SequenceNumber>> mappedState =
+        final List<Tuple2<org.apache.flink.streaming.connectors.kinesis.model.StreamShardMetadata,
+                org.apache.flink.streaming.connectors.kinesis.model.SequenceNumber>> mappedState =
                 StreamSupport.stream(amazonListState.get().spliterator(), false)
-                        .map(e -> FlinkKinesisConsumerMigratorUtil.mapAmazonStateToApache((Tuple2<StreamShardMetadata, SequenceNumber>) e))
+                        .map(e -> FlinkKinesisConsumerMigratorUtil.mapAmazonStateToApache(
+                                (Tuple2<
+                                        software.amazon.kinesis.connectors.flink.model.StreamShardMetadata,
+                                        software.amazon.kinesis.connectors.flink.model.SequenceNumber>) e))
                         .collect(Collectors.toList());
 
         amazonListState.clear();
