@@ -1,0 +1,3 @@
+.idea/
+target/
+amazon-kinesis-connector-flink-state-migrator/target/
