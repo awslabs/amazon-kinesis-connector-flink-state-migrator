@@ -5,7 +5,7 @@ from the Amazon Kinesis Connector (i.e. the package `software.amazon.kinesis.con
 the Apache Flink Kinesis connector (`org.apache.flink.streaming.connectors.kinesis`). 
 This will be necessary, for instance, if you are looking to upgrade your Flink Runtime from Flink 1.8/1.11 to Flink 1.13+.
 
-Currently only the DataStream API is supported. TableAPI is not supported yet, but this may change in the near future.
+Currently we only support the DataStream API.
 
 **What is the Amazon Kinesis Connector?**
 
