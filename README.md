@@ -7,7 +7,7 @@ This will be necessary, for instance, if you are looking to upgrade your Flink R
 
 Currently only the DataStream API is supported. TableAPI is not supported yet, but this may change in the near future.
 
-**What is the old Amazon Kinesis Connector?**
+**What is the Amazon Kinesis Connector?**
 
 The old Amazon Kinesis Connector ([see on Github](https://github.com/awslabs/amazon-kinesis-connector-flink)) was 
 developed to support Enhanced Fan Out (EFO) for Apache Flink 1.8/1.11. It has the Maven coordinates
