@@ -1,11 +1,35 @@
-## My Project
+## Amazon Kinesis Connector State Migrator for Apache Flink
 
-TODO: Fill this README out!
+This library helps you upgrade your Apache Flink applications, without dropping state, 
+from the Amazon Kinesis Connector (i.e. the package `software.amazon.kinesis.connectors`) to 
+the Apache Flink Kinesis connector (`org.apache.flink.streaming.connectors.kinesis`). 
+This will be necessary, for instance, if you are looking to upgrade your Flink Runtime from Flink 1.8/1.11 to Flink 1.13+.
 
-Be sure to:
+Currently we only support the DataStream API.
 
-* Change the title in this README
-* Edit your repository description on GitHub
+**What is the Amazon Kinesis Connector?**
+
+The Amazon Kinesis Connector ([see on Github](https://github.com/awslabs/amazon-kinesis-connector-flink)) was 
+developed to support Enhanced Fan Out (EFO) for Apache Flink 1.8/1.11. It has the Maven coordinates
+`<groupId>software.amazon.kinesis</groupId> <artifactId>amazon-kinesis-connector-flink</artifactId>` and has the packaging
+`software.amazon.kinesis.connectors.*`.
+
+**What is the Apache Kinesis Connector?**
+
+The Apache Flink Kinesis Connector ([see on GitHub](https://github.com/apache/flink-connector-aws)) is supported by the Apache Flink community and the recommended Amazon Kinesis connector.
+
+**What is the problem this project solves?**
+
+This library allows you to migrate from the Amazon to Apache Kinesis connector while retaining state in the source operator. The operator state includes a map of Kinesis shard and sequence numbers. Without this library your job will fail to start.
+
+## How to use
+
+Simply replace `FlinkKinesisConsumer` with `FlinkKinesisConsumerMigrator`
+
+```
+        env.addSource(new FlinkKinesisConsumerMigrator<>("myInputStream", new SimpleStringSchema(), inputProperties));
+```
+
 
 ## Security
 
