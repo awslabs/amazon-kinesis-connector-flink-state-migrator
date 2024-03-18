@@ -27,7 +27,7 @@ This library allows you to migrate from the Amazon to Apache Kinesis connector w
 Simply replace `FlinkKinesisConsumer` with `FlinkKinesisConsumerMigrator`
 
 ```
-        env.addSource(new FlinkKinesisConsumerMigrator<>("myInputStream", new SimpleStringSchema(), inputProperties));
+env.addSource(new FlinkKinesisConsumerMigrator<>("myInputStream", new SimpleStringSchema(), inputProperties));
 ```
 
 After a successful migration to the Apache Kinesis connector, you can:
