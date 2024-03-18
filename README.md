@@ -30,6 +30,10 @@ Simply replace `FlinkKinesisConsumer` with `FlinkKinesisConsumerMigrator`
         env.addSource(new FlinkKinesisConsumerMigrator<>("myInputStream", new SimpleStringSchema(), inputProperties));
 ```
 
+After a successful migration to the Apache Kinesis connector, you can:
+- Take a snapshot with your upgraded Flink application + connector
+- Switch back to using the Apache `FlinkKinesisConsumer`
+- Remove this library from your dependencies
 
 ## Security
 
