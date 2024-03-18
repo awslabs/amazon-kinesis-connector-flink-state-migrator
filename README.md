@@ -17,7 +17,6 @@ developed to support Enhanced Fan Out (EFO) for Apache Flink 1.8/1.11. It has th
 **What is the Apache Kinesis Connector?**
 
 The Apache Flink Kinesis Connector ([see on GitHub](https://github.com/apache/flink-connector-aws)) is supported by the Apache Flink community and the recommended Amazon Kinesis connector.
-Kinesis Connector that has a different package name than the old Kinesis connector: `org.apache.flink.streaming.connectors.kinesis.*`.
 
 **What is the problem this project solves?**
 
