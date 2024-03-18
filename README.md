@@ -14,7 +14,7 @@ developed to support Enhanced Fan Out (EFO) for Apache Flink 1.8/1.11. It has th
 `<groupId>software.amazon.kinesis</groupId> <artifactId>amazon-kinesis-connector-flink</artifactId>` and has the packaging
 `software.amazon.kinesis.connectors.*`.
 
-**What is the new Kinesis Connector?**
+**What is the Apache Kinesis Connector?**
 
 Also known as the Flink Kinesis Connector ([see on GitHub](https://github.com/apache/flink-connector-aws)) is the new 
 Kinesis Connector that has a different package name than the old Kinesis connector: `org.apache.flink.streaming.connectors.kinesis.*`.
