@@ -20,8 +20,7 @@ The Apache Flink Kinesis Connector ([see on GitHub](https://github.com/apache/fl
 
 **What is the problem this project solves?**
 
-The difference in the package names of the old Kinesis connector and the new Kinesis connector causes problems when
-you're upgrading your Flink runtime from 1.8/1.11 to 1.13+ and want to run your upgraded app from the snapshot/state taken with the old runtime.
+This library allows you to migrate from the Amazon to Apache Kinesis connector while retaining state in the source operator. The operator state includes a map of Kinesis shard and sequence numbers. Without this library your job will fail to start.
 
 ## How to use
 
