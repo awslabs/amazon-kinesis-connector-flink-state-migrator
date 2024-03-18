@@ -14,10 +14,11 @@
  *   limitations under the License.
  */
 
-package org.apache.flink.streaming.connectors.kinesis.migrator;
+package software.amazon.kinesis.connectors.flink.migrator;
 
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.junit.jupiter.api.Test;
+import software.amazon.kinesis.connectors.flink.migrator.FlinkKinesisConsumerMigratorUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

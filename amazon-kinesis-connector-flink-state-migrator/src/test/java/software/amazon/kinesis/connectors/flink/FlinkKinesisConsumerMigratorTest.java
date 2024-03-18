@@ -14,13 +14,15 @@
  *   limitations under the License.
  */
 
-package org.apache.flink.streaming.connectors.kinesis;
+package software.amazon.kinesis.connectors.flink;
 
 import lombok.SneakyThrows;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.api.common.state.ListState;
 import org.apache.flink.api.common.state.OperatorStateStore;
 import org.apache.flink.runtime.state.StateInitializationContext;
+import org.apache.flink.streaming.connectors.kinesis.FlinkKinesisConsumer;
+import software.amazon.kinesis.connectors.flink.FlinkKinesisConsumerMigrator;
 import software.amazon.kinesis.connectors.flink.model.SequenceNumber;
 import software.amazon.kinesis.connectors.flink.model.StreamShardMetadata;
 import org.apache.flink.streaming.util.MockStreamingRuntimeContext;

@@ -14,12 +14,13 @@
  *   limitations under the License.
  */
 
-package org.apache.flink.streaming.connectors.kinesis;
+package software.amazon.kinesis.connectors.flink;
 
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.runtime.state.FunctionInitializationContext;
+import org.apache.flink.streaming.connectors.kinesis.FlinkKinesisConsumer;
 import org.apache.flink.streaming.connectors.kinesis.serialization.KinesisDeserializationSchema;
-import org.apache.flink.streaming.connectors.kinesis.migrator.FlinkKinesisConsumerMigratorFunctionInitializationContext;
+import software.amazon.kinesis.connectors.flink.migrator.FlinkKinesisConsumerMigratorFunctionInitializationContext;
 
 import java.util.List;
 import java.util.Properties;
