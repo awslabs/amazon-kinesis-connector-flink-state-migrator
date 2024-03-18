@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package org.apache.flink.streaming.connectors.kinesis.migrator;
+package software.amazon.kinesis.connectors.flink.migrator;
 
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;

@@ -14,7 +14,7 @@
  *   limitations under the License.
  */
 
-package org.apache.flink.streaming.connectors.kinesis.migrator;
+package software.amazon.kinesis.connectors.flink.migrator;
 
 import org.apache.flink.api.common.state.OperatorStateStore;
 import org.apache.flink.runtime.state.FunctionInitializationContext;
@@ -23,6 +23,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import software.amazon.kinesis.connectors.flink.migrator.FlinkKinesisConsumerMigratorFunctionInitializationContext;
+import software.amazon.kinesis.connectors.flink.migrator.FlinkKinesisConsumerMigratorOperatorStateStore;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
