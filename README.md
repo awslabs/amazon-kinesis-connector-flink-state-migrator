@@ -1,4 +1,4 @@
-## Amazon Kinesis Connector State Migrator
+## Amazon Kinesis Connector State Migrator for Apache Flink
 
 This library helps you migrate your Apache Flink applications, without losing your app state, 
 from the old Amazon Kinesis Connector (i.e. the package `software.amazon.kinesis.connectors`) to 
