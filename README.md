@@ -1,7 +1,7 @@
 ## Amazon Kinesis Connector State Migrator for Apache Flink
 
 This library helps you upgrade your Apache Flink applications, without dropping state, 
-from the old Amazon Kinesis Connector (i.e. the package `software.amazon.kinesis.connectors`) to 
+from the Amazon Kinesis Connector (i.e. the package `software.amazon.kinesis.connectors`) to 
 the new Flink Kinesis connector (`org.apache.flink.streaming.connectors.kinesis`). 
 This will be necessary, for instance, if you are looking to upgrade your Flink Runtime from Flink 1.8/1.11 to Flink 1.13+.
 
