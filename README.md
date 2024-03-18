@@ -9,7 +9,7 @@ Currently we only support the DataStream API.
 
 **What is the Amazon Kinesis Connector?**
 
-The old Amazon Kinesis Connector ([see on Github](https://github.com/awslabs/amazon-kinesis-connector-flink)) was 
+The Amazon Kinesis Connector ([see on Github](https://github.com/awslabs/amazon-kinesis-connector-flink)) was 
 developed to support Enhanced Fan Out (EFO) for Apache Flink 1.8/1.11. It has the Maven coordinates
 `<groupId>software.amazon.kinesis</groupId> <artifactId>amazon-kinesis-connector-flink</artifactId>` and has the packaging
 `software.amazon.kinesis.connectors.*`.
