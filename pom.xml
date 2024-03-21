@@ -36,8 +36,27 @@ limitations under the License.
 	<scm>
 		<connection>scm:git:https://github.com/awslabs/amazon-kinesis-connector-flink-state-migrator.git</connection>
 		<developerConnection>scm:git:git@github.com:awslabs/amazon-kinesis-connector-flink-state-migrator.git</developerConnection>
-		<url>https://github.com/awslabs/amazon-kinesis-connector-flink-state-migrator/tree/master</url>
+		<url>https://github.com/awslabs/amazon-kinesis-connector-flink-state-migrator/tree/main</url>
 	</scm>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>amazonwebservices</id>
+			<organization>Amazon Web Services</organization>
+			<organizationUrl>https://aws.amazon.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
 
 	<modules>
 		<module>amazon-kinesis-connector-flink-state-migrator</module>
