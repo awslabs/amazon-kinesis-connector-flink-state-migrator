@@ -27,8 +27,10 @@ This library allows you to migrate from the Amazon to Apache Kinesis connector w
 Simply replace `FlinkKinesisConsumer` with `FlinkKinesisConsumerMigrator`
 
 ```
-env.addSource(new FlinkKinesisConsumerMigrator<>("myInputStream", new SimpleStringSchema(), inputProperties));
+env.addSource(new FlinkKinesisConsumerMigrator<>("myInputStream", new SimpleStringSchema(), inputProperties)).uid("my-source");
 ```
+
+**Important note:** The migrator does not work if you don't already have a uid set on your source.
 
 After a successful migration to the Apache Kinesis connector, you can:
 - Take a snapshot with your upgraded Flink application + connector
