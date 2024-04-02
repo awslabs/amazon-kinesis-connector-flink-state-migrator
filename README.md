@@ -24,6 +24,16 @@ This library allows you to migrate from the Amazon to Apache Kinesis connector w
 
 ## How to use
 
+Add the library to your project. Example for Maven:
+
+```
+<dependency>
+    <groupId>software.amazon.kinesis</groupId>
+    <artifactId>amazon-kinesis-connector-flink-state-migrator</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
 Simply replace `FlinkKinesisConsumer` with `FlinkKinesisConsumerMigrator`
 
 ```
