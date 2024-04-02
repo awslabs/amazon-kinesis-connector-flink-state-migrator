@@ -40,7 +40,7 @@ Simply replace `FlinkKinesisConsumer` with `FlinkKinesisConsumerMigrator`
 env.addSource(new FlinkKinesisConsumerMigrator<>("myInputStream", new SimpleStringSchema(), inputProperties)).uid("my-source");
 ```
 
-**Important note:** The migrator does not work if you don't already have a uid set on your source.
+**Important note:** The migrator does not work if you don't already have a uid set on your source. A workaround is for you to set the UID Hash of the source manually. See [docs](https://nightlies.apache.org/flink/flink-docs-master/api/java/org/apache/flink/streaming/api/datastream/DataStreamSink.html#setUidHash-java.lang.String-). If you don't have a uid set on your consumer, you can use the `setUidHash` method on the source with `FlinkKinesisConsumerMigrator` and set the uid hash to the uid hash of the source you're migrating from.
 
 After a successful migration to the Apache Kinesis connector, you can:
 - Take a snapshot with your upgraded Flink application + connector
